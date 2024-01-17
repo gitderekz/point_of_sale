@@ -28,10 +28,10 @@ class PembelianController extends Controller
                 return format_uang($pembelian->total_item);
             })
             ->addColumn('total_harga', function ($pembelian) {
-                return '$ '. format_uang($pembelian->total_harga);
+                return 'Tsh '. format_uang($pembelian->total_harga);
             })
             ->addColumn('bayar', function ($pembelian) {
-                return '$ '. format_uang($pembelian->bayar);
+                return 'Tsh '. format_uang($pembelian->bayar);
             })
             ->addColumn('tanggal', function ($pembelian) {
                 return tanggal_indonesia($pembelian->created_at, false);
@@ -103,13 +103,13 @@ class PembelianController extends Controller
                 return $detail->produk->nama_produk;
             })
             ->addColumn('harga_beli', function ($detail) {
-                return '$ '. format_uang($detail->harga_beli);
+                return 'Tsh '. format_uang($detail->harga_beli);
             })
             ->addColumn('jumlah', function ($detail) {
                 return format_uang($detail->jumlah);
             })
             ->addColumn('subtotal', function ($detail) {
-                return '$ '. format_uang($detail->subtotal);
+                return 'Tsh '. format_uang($detail->subtotal);
             })
             ->rawColumns(['kode_produk'])
             ->make(true);

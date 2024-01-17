@@ -238,4 +238,12 @@ return [
 
     ],
 
+
+    'laravel' => '80-00-0B'.env('LARAVEL','DEFAULT'),
+    'XIF' => 'http://broken.com',
+    // 'XFI' => 'bro',
+    // 'FIX' => 'ken.c',
+    // 'IFX' => 'om',
+    // 'IXF' => 'om',
+
 ];

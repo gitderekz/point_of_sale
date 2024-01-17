@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::group(['middleware' => 'laravel'], function () {
 Route::get('/', function () {
     return redirect()->route('login');
 });
@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => 'level:1,2'], function () {
-        Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');
+        Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');//->middleware('laravel');
         Route::post('/transaksi/simpan', [PenjualanController::class, 'store'])->name('transaksi.simpan');
         Route::get('/transaksi/selesai', [PenjualanController::class, 'selesai'])->name('transaksi.selesai');
         Route::get('/transaksi/nota-kecil', [PenjualanController::class, 'notaKecil'])->name('transaksi.nota_kecil');
@@ -101,3 +101,4 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/profil', [UserController::class, 'updateProfil'])->name('user.update_profil');
     });
 });
+// });
