@@ -59,16 +59,18 @@ class PenjualanController extends Controller
     // visit "codeastro" for more projects!
     public function create()
     {
-        $penjualan = new Penjualan();
-        $penjualan->id_member = null;
-        $penjualan->total_item = 0;
-        $penjualan->total_harga = 0;
-        $penjualan->diskon = 0;
-        $penjualan->bayar = 0;
-        $penjualan->diterima = 0;
-        $penjualan->id_user = auth()->id();
-        $penjualan->save();
-
+        $penjualan = Penjualan::where('id_member',null)->where('total_item',0)->where('total_harga',0)->where('diskon',0)->where('bayar',0)->where('diterima',0)->where('id_user',auth()->id())->first();
+        if (!$penjualan) {
+            $penjualan = new Penjualan();
+            $penjualan->id_member = null;
+            $penjualan->total_item = 0;
+            $penjualan->total_harga = 0;
+            $penjualan->diskon = 0;
+            $penjualan->bayar = 0;
+            $penjualan->diterima = 0;
+            $penjualan->id_user = auth()->id();
+            $penjualan->save();
+        }
         session(['id_penjualan' => $penjualan->id_penjualan]);
         return redirect()->route('transaksi.index');
     }
